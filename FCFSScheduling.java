@@ -85,7 +85,7 @@ public class FCFSScheduling {
                 }
             }
         
-            // sort processes by arrival time (bubble sort)
+            // sort processes by arrival time (bubble sort since fcfs, so ascending order is fine)
             for (int i = 0; i < numProcesses - 1; i++) {
                 for (int j = 0; j < numProcesses - i - 1; j++) {
 
