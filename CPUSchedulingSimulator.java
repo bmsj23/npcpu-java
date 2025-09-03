@@ -80,7 +80,17 @@ public class CPUSchedulingSimulator {
                         System.out.println("Error: Arrival time cannot be negative. Please try again.");
                         validArrivalTime = false; // keep flag false to continue loop
                     } else {
-                        validArrivalTime = true; // set flag to true to exit loop
+                        // check for duplicate arrival times (check against previous entries only)
+                        boolean isDuplicate = false;
+                        for (int j = 0; j < i; j++) {
+                            if (arrivalTime[i] == arrivalTime[j]) {
+                                System.out.println("Error: Duplicate arrival time found: " + arrivalTime[i] + ". Each process must have a unique arrival time. Please enter a different time.");
+                                isDuplicate = true;
+                                break; // exit the inner for loop
+                            }
+                        }
+                        // set flag based on whether duplicate was found
+                        validArrivalTime = !isDuplicate; // true if no duplicate, false otherwise
                     }
                 }
             }
